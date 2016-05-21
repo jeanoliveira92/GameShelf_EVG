@@ -1,0 +1,135 @@
+/* 
+
+	CSS DOCUMENT
+	Theme Name: Game Shelf Template
+	Theme URI: http://www.com
+	Description: Folha de estilos
+	Author: Antonio Jose, Felipe Wallace, Jean Carlos
+	Author URI: http://wwww.com
+	Version: 1.0
+	Tags: game, shelf, jogos, estante
+
+*/
+*{box-sizing: border-box; margin:0; padding:0; outline:0;}
+
+ html,body{
+    height:100%;
+    min-height:100%;
+    width: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding:0; 
+    background-color: #f9f9f9;
+	color: #333;
+    font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+
+img {
+	border:none;
+	margin: 0 0;
+}
+
+
+h1{
+	margin: 30px 0px;
+}
+
+a{
+	color: #4078c0;
+	text-decoration: none;
+}
+
+label{
+	font-size: 13px;
+}
+
+/* navbar */
+
+.navbar {
+	;
+}
+.navbar-header img{
+	padding: 12px 0px;
+}
+/* contend */
+
+.container{
+	width: 100%;
+}
+
+.sidebar{
+	height: 390px; 
+}
+
+.footer p{
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: right;
+	font-size: 12px;
+}
+
+/* Login */
+
+.auth {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.auth-logo{
+	margin-top: 10%;
+    height: 105px;
+	background: url("../img/logo_105p.png") no-repeat center; 
+}
+
+.auth-box{
+	position: relative;
+	padding: 20px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #d8dee2;
+	border-top: 1px solid #d8dee2;
+    border-radius: 5px;	
+}
+
+.auth-form label{
+    display: block;
+    margin-bottom: 7px;
+    font-weight: normal;
+}
+
+.auth-imput{
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+	margin-top: 5px;
+    margin-bottom: 15px;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.auth-btn {
+	position: relative;
+	padding: 6px 12px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+    font-weight: bold;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+	
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+    background-image: linear-gradient(#fcfcfc, #eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+}
