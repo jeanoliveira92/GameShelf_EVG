@@ -186,14 +186,14 @@
 									
 									echo "<li class='next'><a ";
 									if($pag < $pags){
-										echo "href='consuluser.php?pag=".($pag+1)."'";
+										echo "href='consuluser.php?pag=".($pag+1)."&nome=$nome'";
 									}
 
 									echo " aria-label='Next' rel='next'>Próximo &gt;</a></li>";
 									echo "<li class='next'><a ";
 									
 									if($pag < $pags){
-										echo "href='consuluser.php?pag=".$pags."'";
+										echo "href='consuluser.php?pag=".$pags."&nome=$nome'";
 									}	
 									
 									echo "aria-label='Next' rel='end'>Fim

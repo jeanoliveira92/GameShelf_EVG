@@ -13,7 +13,6 @@
 		<link href="../css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<link href="../css/style.css" rel="stylesheet">
 		<script src="../js/jquery-1.12.3.min.js"></script>
-		<script src="../js/script.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	</head>
 	<body>
