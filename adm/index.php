@@ -18,6 +18,7 @@
 		<meta charset="utf-8"/>
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 		<title>EVG - LOGIN</title>		
+		<link rel="shortcut icon" type="image/png" href="../img/favicon.png"/>
 		<link href="../css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<link href="../css/style.css" rel="stylesheet">
 		<script src="../js/jquery-1.12.3.min.js"></script>

@@ -1,4 +1,4 @@
-		<?php 
+<?php 
 		
 			include("mysqlconfig.inc");
 			
@@ -6,27 +6,10 @@
 			
 			if($_SESSION["tipo"] != 1){ 
 				//Se não possuir permissão, será redirecionado de volta
-				echo"<script> alert('Você não possui permissões para esta ação.'); Location: javascript:history.back(); </script>";
-			}
+					echo"<script> alert('Você não possui permissões para esta ação.'); Location: javascript:history.back(); </script>";
+				}
 		?>
-		<!-- Modal -->
-			<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-						</div>
-						<div class="modal-body">Deseja realmente excluir este item? </div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Sim</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		<div class="wrapper" >
+		<div class="wrapper" role="main">
 			<div class="container">
 				<div class="row">
 				<?php include("left-sidebar.php"); ?>
@@ -52,14 +35,14 @@
 									<a href="caduser.php" class="btn btn-primary pull-right h2">Novo Usuário</a>
 								</div>
 							 </div> <!-- /#top -->
-							<hr>
+						 
 							 <?php
-								
+							
 								$inicio = 0;
 								$limite = 8	; // NUMERO DE ELEMENTOS
 								$pag = 1;
 								$nome = "";
-									
+																
 								// pegar a pagina atual
 								
 								if(isset($_GET['nome'])){
@@ -68,7 +51,7 @@
 									
 									if(!empty($_GET['nome'])){
 										$nome = trim($_GET['nome']);
-										$sqlUser = " WHERE nome LIKE '%nome%'";
+										$sqlUser = " WHERE nome LIKE '%$nome%'";
 									}
 									
 									if(isset($_GET['pag'])){
@@ -77,36 +60,36 @@
 											$pag = filter_var($pag, FILTER_VALIDATE_INT);
 										}
 									}
-									
-									//$inicio = ($pag - 1) * $limite; 
+
 									$inicio = ($pag * $limite) - $limite;
 									
 									echo "
-										<div id='list' class='row'><table class='table table-hover'>
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Nome</th>
-												<th>E-mail</th>
-												<th>Tipo</th>
-												<th class='actions'>Ações</th>
-											</tr>
-										</thead>
-										<tbody>";
+										<hr />
+											<div id='list' class='row'>
+												<table class='table table-hover'>
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Nome</th>
+															<th>E-mail</th>
+															<th>Tipo</th>
+															<th class='actions'>Operações</th>
+														</tr>
+													</thead>
+													<tbody>";
 										
-									$result = mysql_query("select * from usuarios".$sqlUser." LIMIT $inicio, $limite");   
-									while ($row = mysql_fetch_array($result)){ 
-									
+									$result = mysql_query("select * from usuarios".$sqlUser." ORDER BY nome 	LIMIT $inicio, $limite ");   
+									while ($row = mysql_fetch_array($result))   
+									{ 
 										echo "<tr><td>".$row['id']."</td>";
-										echo "<td>".$row['nome']."</td>";	
-										echo "<td>".$row['email']."</td>";
-										
+										echo "<td>".$row['nome']."</td>";
+										echo "<td>".$row['email']."</td>";													
 										if($row['tipo'] == 1){
 											echo "<td>Administrador</td>";												
 										}else{
 											echo "<td>Moderador</td>";
 										}
-												
+										
 										echo "<td class='actions'>";
 										echo "	<a class='btn btn-success btn-xs' href='view.html'>Visualizar</a>";
 										echo "	<a class='btn btn-warning btn-xs' href='edit.html'>Editar</a>";
@@ -114,10 +97,8 @@
 										echo "</td>";
 										echo "</tr>";
 									}
-								
-									echo "</tbody>
-									</table>";
-									echo "</div> <!-- /#list -->
+												echo "</tbody>
+												</table>";	echo "</div> <!-- /#list -->
 										 <div id='bottom' class='row'>
 												<div class='col-md-10 col-md-offset-2'>
 											 
@@ -206,5 +187,5 @@
 						</div> <!-- /#bottom -->";
 								}
 								?>
-																		
+								
 		<?php include("footer.php"); ?>

@@ -13,9 +13,26 @@
 	//variavel que informará a ocorrencia de erros
 	$erro = 0;
 	
-	if(empty($nome)){
+	$result = mysql_query("select email from usuarios");   
+	while ($row = mysql_fetch_array($result))   
+	{ 
+		if($row['email'] == $email){		
+			$erro = 1;
+			break;
+		}
+		
+	}
+	
+	if($erro == 1){
+		$msg = " E-MAIL JA CONSTA NO SISTEMA";
+		
+	}else if(empty($nome)){
 		$erro = 1;
 		$msg = " INFORME O NOME";
+		
+	}else if(empty($email)){
+		$erro = 1;
+		$msg = " INFORME SEU E-MAIL";
 		
 	}else if(empty($email)){
 		$erro = 1;
@@ -33,6 +50,10 @@
 	}else if(empty($senha)){
 		$erro = 1;
 		$msg = " INFORME A SENHA";
+		
+	}else if(strlen($senha) < 8){
+		$erro = 1;
+		$msg = " SENHA DEVE POSSUIR NO MINIMO 8 CARACTERES";
 		
 	}else if($_POST['senha'] !=  $_POST['senha2']){
 		$erro = 1;
@@ -59,7 +80,7 @@
 		//$total = mysql_num_rows($result_id);
 		
 
-		$msg = "Cadastro realizado com suceso";
+		$msg = "Cadastro realizado com sucesso";
 		echo"<script> alert('$msg'); Location: location.href='caduser.php';</script>";
 
 	}
