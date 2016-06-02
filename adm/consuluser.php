@@ -4,10 +4,6 @@
 			
 			include("header.php"); 
 			
-			if($_SESSION["tipo"] != 1){ 
-				//Se não possuir permissão, será redirecionado de volta
-					echo"<script> alert('Você não possui permissões para esta ação.'); Location: javascript:history.back(); </script>";
-				}
 		?>
 		<div class="wrapper" role="main">
 			<div class="container">
@@ -78,7 +74,7 @@
 													</thead>
 													<tbody>";
 										
-									$result = mysql_query("select * from usuarios".$sqlUser." ORDER BY nome 	LIMIT $inicio, $limite ");   
+									$result = mysql_query("select * from usuarios".$sqlUser." ORDER BY nome LIMIT $inicio, $limite ");   
 									while ($row = mysql_fetch_array($result))   
 									{ 
 										echo "<tr><td>".$row['id']."</td>";
@@ -91,8 +87,8 @@
 										}
 										
 										echo "<td class='actions'>";
-										echo "	<a class='btn btn-success btn-xs' href='view.html'>Visualizar</a>";
-										echo "	<a class='btn btn-warning btn-xs' href='edit.html'>Editar</a>";
+										echo "	<a class='btn btn-success btn-xs' href='vistuser.php?id=".$row['id']."'>Visualizar</a>";
+										echo "	<a class='btn btn-warning btn-xs' href='caduser.php?id=".$row['id']."'>Editar</a>";
 										echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
 										echo "</td>";
 										echo "</tr>";
