@@ -3,8 +3,28 @@
 			include("mysqlconfig.inc");
 			
 			include("header.php"); 
-			
+
 		?>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+			  </div>
+			  <div class="modal-body">
+				Deseja realmente excluir este item?
+			  </div>
+			  <div class="modal-footer">
+				<a href='excluiUsuario.php?id=' class='btn btn-primary'>Sim</a>
+				<a class='btn btn-default' data-dismiss="modal">Não</a>
+			  </div>
+			</div>
+		  </div>
+		</div> <!-- /.modal -->
+		
 		<div class="wrapper" role="main">
 			<div class="container">
 				<div class="row">
@@ -47,7 +67,7 @@
 									
 									if(!empty($_GET['nome'])){
 										$nome = trim($_GET['nome']);
-										$sqlUser = " WHERE nome LIKE '%$nome%'";
+										$sqlUser = " AND nome LIKE '%$nome%'";
 									}
 									
 									if(isset($_GET['pag'])){
@@ -74,7 +94,7 @@
 													</thead>
 													<tbody>";
 										
-									$result = mysql_query("select * from usuarios".$sqlUser." ORDER BY nome LIMIT $inicio, $limite ");   
+									$result = mysql_query("select * from usuarios WHERE status='1'".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
 									while ($row = mysql_fetch_array($result))   
 									{ 
 										echo "<tr><td>".$row['id']."</td>";
@@ -89,8 +109,9 @@
 										echo "<td class='actions'>";
 										echo "	<a class='btn btn-success btn-xs' href='vistuser.php?id=".$row['id']."'>Visualizar</a>";
 										echo "	<a class='btn btn-warning btn-xs' href='caduser.php?id=".$row['id']."'>Editar</a>";
-										echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
-										echo "</td>";
+										//echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
+										echo "	<a class='btn btn-danger btn-xs'  href='excluiUsuario.php?id=".$row['id']."'";?> onclick="return confirm('Deseja remover realmente?')">Excluir</a>
+										<?php echo "</td>";
 										echo "</tr>";
 									}
 												echo "</tbody>
@@ -100,7 +121,7 @@
 											 
 									<ul class='pagination'>";
 										
-									$sql = "SELECT id FROM usuarios".$sqlUser;
+									$sql = "SELECT id FROM usuarios WHERE status='1'".$sqlUser;
 									$query = mysql_query($sql);
 									$total = mysql_num_rows($query); 
 									
@@ -183,5 +204,12 @@
 						</div> <!-- /#bottom -->";
 								}
 								?>
-								
+					<script language="javascript">
+					function excluir(){
+							var resp = confirm('Deseja realmente remover?');
+							if(resp){
+								Location: location.href='main.php'; 
+							}	
+					}
+				</script>					
 		<?php include("footer.php"); ?>

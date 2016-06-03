@@ -98,7 +98,7 @@
 			}
 	
 		}else{
-			$sql = "insert into usuarios values('NULL','$nome','$senha', '$email', $tipo)";
+			$sql = "insert into usuarios values('NULL','$nome','$senha', '$email', $tipo, '1')";
 		}
 
 		$result_id = mysql_query($sql) or die("<script> alert('Erro no banco de dados!'); Location: javascript:history.back(); </script>"); 

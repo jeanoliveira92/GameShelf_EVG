@@ -76,6 +76,10 @@ label{
 .navbar-header img{
 	padding: 12px 0px;
 }
+
+.nav li a{
+	text-transform: capitalize;
+}
 /* contend */
 
 .container{
@@ -83,7 +87,7 @@ label{
 }
 
 .sidebar{
-	height: 390px; 
+	aheight: 390px; 
 }
 
 .footer p{
