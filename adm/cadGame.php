@@ -45,103 +45,63 @@
 								echo "
 								<fieldset class='form-group'>
 									<h1> Alteração de Games </h1>
-									<div class='row'>
-										<div class='form-group col-md-4'>
-											<label for='nome'>Nome:</label>
-											<input type='text' class='form-control' name='nome' value='$dados[nome]'>
-										</div>
-										<div class='form-group col-md-3'>
-											<label for='campo1'>Tipo da Conta:</label>
-											<div class='radio' >
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='2'"; if($dados['tipo'] == 2) echo "checked"; echo "> Moderador
-											  </label>
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='1' "; if($dados['tipo'] == 1) echo "checked"; echo "> Adminstrador
-											  </label>
-											</div>
-										</div>";
-										
-										if($dados['status'] < 1){
-											echo "<div class='form-group col-md-3'>
-												<label for='campo1'>Conta Desativada:</label>
-												<div class='checkbox' >
-												  <label class='radio-inline'>
-													<input type='checkbox' name='status'> Ativar conta
-												  </label>
-												</div>
-											</div>";
-										}
-										echo "
 									
-										</div>
-										<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='e-mail'>E-mail:</label>
-											<input type='email' class='form-control'  name='email' value='$dados[email]'>
-										</div>
-										<div class='form-group col-md-5'>
-											<label for='email2'>Repita o e-mail:</label>
-											<input type='email' class='form-control' name='email2' data-error='Confirme o e-mail.' required>
-												<div class='help-block with-errors'></div>
-										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-12'>
-											<label for='campo1'>Selecione caso deseje alterar a senha:</label>
-											<div class='radio' style='display: inline;'>
-											  <label class='radio-inline'>
-												<input type='checkbox' name='vSenha' > Alterar Senha
-											  </label>
-											</div>
-										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='senha'>Senha:</label>
-											<input type='password' class='form-control' name='senha'>
-										</div>
-										<div class='form-group col-md-5'>
-											<label for='senha2'>Repita a senha:</label>
-											<input type='password' class='form-control' name='senha2'>
-										</div>
-									</div>	
 								</fieldset>			
 								<button type='submit' class='btn btn-primary'>Alterar</button>";
+								
 							}else{
-								echo "<fieldset class='form-group'>
+								echo "<fieldset class='form-group inline'>
 									<h1> Cadastro de Games </h1>
 									<div class='row'>
-										<div class='form-group col-md-5'>
+										<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
+											<div class='fileinput-new thumbnail'>
+												<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
+											</div>											
+											<div>
+												<span class='btn btn-primary btn-file'>
+													<span class='fileinput-new'>Selecionar imagem</span>
+													<input type='file' name='profile_picture' style='display:none;'>
+												</span>
+												<a href='#' class='btn btn-primary fileinput-exists' data-dismiss='fileinput'>Remover imagem</a>
+											</div>
+										</div>
+										
+										<div class='form-group col-md-6'>
 											<label for='nome'>Nome:</label>
 											<input type='text' class='form-control' name='nome' data-error='Por favor, informe um nome.' required>
 												<div class='help-block with-errors'></div>
 										</div>
-										<div class='form-group col-md-4'>
-											<label for='campo1'>Tipo da Conta:</label>
-											<div class='radio' >
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='2' checked> Moderador
-											  </label>
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo'  value='1'> Adminstrador
-											  </label>
+										<div class='form-group col-md-6'>
+												<label for='genero'>Selecione os Generos:</label>
+											<div class='checkbox'>";
+										
+										$genero ="select * from generos";		
+										$queryg = mysql_query($genero) or die("Deu erro".mysql_error());
+										
+										while($generos = mysql_fetch_array($queryg)){
+										echo " <div class='col-md-3'>
+													<label class='checkbox-inline'><input type='checkbox' name='".trim($generos['nome'])."' value='$generos[id]'>$generos[nome]</label>
+													</div>
+													";
+												
+										}	
+										echo "</div>
+										</div>
+										
+										<div class='form-group col-md-6'>										
+											<div class='col-md-6'>
+												<label for='e-mail'>Número de Jogadores: </label>
+												<div class='radio'>
+													<label class='radio-inline'><input type='radio' name='optradio' checked>Single Player</label>
+													<label class='radio-inline'><input type='radio' name='optradio'>Multiplayer</label>
+												</div>
+											</div>
+											<div class='col-md-6'>										
+												<label for='date'>Data de Lançamento:</label>
+												<input type='date' class='form-control' name='date'>
 											</div>
 										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='e-mail'>E-mail:</label>
-											<input type='email' class='form-control'  name='email' data-error='E-mail inválido.' required>
-												<div class='help-block with-errors'></div>
-										</div>
-										<div class='form-group col-md-5'>
-											<label for='email2'>Repita o e-mail:</label>
-											<input type='email' class='form-control' name='email2' data-error='Confirme o e-mail.' required>
-												<div class='help-block with-errors'></div>
-										</div>
-									</div>
-									<div class='row'>
+										
 										<div class='form-group col-md-5'>
 											<label for='senha' required>Senha:</label>
 											<input type='password' class='form-control' name='senha' data-error='Mínimo 8 caracteres.' required>

@@ -55,6 +55,15 @@
 													<span class="glyphicon glyphicon-file text-info"></span><a href="consulgenero.php"> Consultar Generos</a>
 												</td>
 											</tr>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadPlataforma.php"> Cadastrar Plataformas</a>
+												</td>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-file text-info"></span><a href="consulplataforma.php"> Consultar Plataformas</a>
+												</td>
+											</tr>
 										</tbody></table>
 									</div>
 								</div>

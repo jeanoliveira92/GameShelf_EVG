@@ -17,6 +17,7 @@
 		<script src="../js/jquery-1.12.3.min.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 		<script src="../js/validator.js"></script>
+		<script src="../js/masonry.min.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default" role="navigation">
