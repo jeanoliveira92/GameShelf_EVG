@@ -13,12 +13,13 @@
 										<table class="table">
 											<tbody><tr>
 												<td>
-													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="caduser.php"> Cadastrar </a>
+													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="caduser.php"> Cadastrar Usuários</a>
 												</td>
+											</tr>
 											</tr>
 											<tr>
 												<td>
-													<span class="glyphicon glyphicon-file text-info"></span><a href="consuluser.php"> Consultar </a>
+													<span class="glyphicon glyphicon-file text-info"></span><a href="consuluser.php"> Consultar Usuários</a>
 												</td>
 											</tr>
 										</tbody></table>
@@ -37,12 +38,21 @@
 										<table class="table">
 											<tbody><tr>
 												<td>
-													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadgame.php"> Cadastrar </a>
+													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadGame.php"> Cadastrar Games</a>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													<span class="glyphicon glyphicon-file text-info"></span><a href="consulgame.php"> Consultar </a>
+													<span class="glyphicon glyphicon-file text-info"></span><a href="consulgame.php"> Consultar Games</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadGenero.php"> Cadastrar Generos</a>
+												</td>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-file text-info"></span><a href="consulgenero.php"> Consultar Generos</a>
 												</td>
 											</tr>
 										</tbody></table>

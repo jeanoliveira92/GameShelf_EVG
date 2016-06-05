@@ -1,8 +1,8 @@
 <?php
-	// Conex„o com o banco de dados 
+	// Conex√£o com o banco de dados 
 	include("mysqlconfig.inc");
 	
-	// Inicia sessıes 
+	// Inicia sess√µes 
 	session_start();
 	
 	$nome	= $_POST['nome'];
@@ -10,7 +10,7 @@
 	$senha	= $_POST['senha'];
 	$tipo	= $_POST['tipo'];
 	
-	//variavel que informar· a ocorrencia de erros
+	//variavel que informar√° a ocorrencia de erros
 	$erro = 0;
 	
 	if(isset($_GET["opt"])){
@@ -32,15 +32,22 @@
 		}
 	}else{
 		
-		$result = mysql_query("select email from usuarios");   
+		$result = mysql_query("select email,status from usuarios");   
 		while ($row = mysql_fetch_array($result)){ 
-			if($row['email'] == $email){		
-				$erro = 1;
-				break;
+			if($row['email'] == $email){
+				if($row['status'] < 1){
+					$erro = 2;
+					break;
+				}else{
+					$erro = 1;
+					break;
+				}
 			}
 		}
 	}
-	if($erro == 1){
+	if($erro == 2){
+		$msg = " Usu√°rio pr√© cadastrado e inativo. Pe√ßa ao administrador a reativa√ß√£o";
+	}else if($erro == 1){
 		$msg = " E-MAIL JA CONSTA NO SISTEMA";
 		
 	}else if(empty($nome)){
@@ -60,9 +67,9 @@
 		$msg = " E-MAILS DIFERENTES";
 		
 	}else if(strlen($email)<7 || substr_count($email,"@")!=1 || substr_count($email,".")==0){
-		//verifica tamanho mÌnimo do e-mail e se existe "@" e ponto.
+		//verifica tamanho m√≠nimo do e-mail e se existe "@" e ponto.
 		$erro = 1;
-		$msg = "E-MAIL N√O FOI DIGITADO CORRETAMENTE"; 
+		$msg = "E-MAIL N√ÉO FOI DIGITADO CORRETAMENTE"; 
 	
 	}else if(!isset($_GET["opt"]) || (isset($_GET["opt"]) && isset($_POST["vSenha"]))){		
 		if(empty($senha)){
@@ -83,28 +90,40 @@
 		
 	}		
 	
-	//se n„o h· erro, exibe a msg
-	if($erro > 0){ echo"<script> alert('$msg'); Location: javascript:history.back(); </script>";
+	if($erro == 2){
+		echo"<script> alert('$msg'); Location: location.href='main.php'; </script>";
+						
+	}else if($erro == 1){ echo"<script> alert('$msg'); Location: javascript:history.back(); </script>";
+	//se n√£o h√° erro, exibe a msg
 	}else{
 		
 		$senha = md5(trim($senha));
 	
-		//aqui podemos realizar o tratamento das informaÁıes. ex: gravando em um arquivo ou banco de dados
+		//aqui podemos realizar o tratamento das informa√ß√µes. ex: gravando em um arquivo ou banco de dados
 		if(isset($_GET["opt"])){
-			if(isset($_POST["vSenha"])){
-				$sql = "update usuarios set nome='$nome', senha='$senha', email='$email', tipo=$tipo where id='$id'";
+			
+			if(isset($_POST["status"])){
+				$status = ", status='1'";				
 			}else{
-				$sql = "update usuarios set nome='$nome', email='$email', tipo=$tipo where id='$id'";
+				$status = "";
+			}	
+			
+			if(isset($_POST["vSenha"])){
+				$sql = "update usuarios set nome='$nome', senha='$senha', email='$email', tipo=$tipo $status where id='$id'";
+				$msg = "Cadastro atualizado com sucesso";
+			}else{
+				$sql = "update usuarios set nome='$nome', email='$email', tipo=$tipo $status where id='$id'";
+				$msg = "Cadastro atualizado com sucesso";
 			}
 	
 		}else{
 			$sql = "insert into usuarios values('NULL','$nome','$senha', '$email', $tipo, '1')";
+				$msg = "Cadastro realizado com sucesso";
 		}
 
 		$result_id = mysql_query($sql) or die("<script> alert('Erro no banco de dados!'); Location: javascript:history.back(); </script>"); 
 		
-		$msg = "Cadastro realizado com sucesso";
+		
 		echo"<script> alert('$msg'); Location: location.href='main.php';</script>";
-
 	}
 ?>

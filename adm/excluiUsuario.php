@@ -1,8 +1,8 @@
 <?php
-	// Conex„o com o banco de dados 
+	// Conex√£o com o banco de dados 
 	include("mysqlconfig.inc");
 	
-	// Inicia sessıes 
+	// Inicia sess√µes 
 	session_start();
 	
 	if(isset($_GET["id"])){
@@ -13,7 +13,7 @@
 		$result = mysql_query($sql);
 		
 		if(!$result)
-			$msg = "Cadastro n„o encontrado.";
+			$msg = "Cadastro n√£o encontrado.";
 		else{
 			$msg = "Cadastro desativado com sucesso!";
 		}
@@ -21,5 +21,5 @@
 		
 		echo"<script> alert('$msg'); Location: location.href='main.php';</script>";
 
-	}echo"<script> alert('Id inv·lido'); Location: location.href='main.php';</script>";
+	}echo"<script> alert('Id inv√°lido'); Location: location.href='main.php';</script>";
 ?>
