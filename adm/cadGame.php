@@ -37,14 +37,14 @@
 					<div class="col-md-9">
 						<div class="col-md-12">
 							<form method="post" data-toggle="validator"  id="cadastraUsuario" name="cadastraUsuario" 
-							<?php	if(isset($id)){	echo "action='cadastraUsuario.php?opt=update&id=$_GET[id]'";}
-									else{			echo "action='cadastraUsuario.php'";}						
+							<?php	if(isset($id)){	echo "action='cadastraGame.php?opt=update&id=$_GET[id]'";}
+									else{			echo "action='cadastraGame.php'";}						
 							?>>
 							<?php
 							if(isset($id)){
 								echo "
 								<fieldset class='form-group'>
-									<h1> Alteração de Usuários </h1>
+									<h1> Alteração de Games </h1>
 									<div class='row'>
 										<div class='form-group col-md-4'>
 											<label for='nome'>Nome:</label>
@@ -110,7 +110,7 @@
 								<button type='submit' class='btn btn-primary'>Alterar</button>";
 							}else{
 								echo "<fieldset class='form-group'>
-									<h1> Cadastro de Usuários </h1>
+									<h1> Cadastro de Games </h1>
 									<div class='row'>
 										<div class='form-group col-md-5'>
 											<label for='nome'>Nome:</label>

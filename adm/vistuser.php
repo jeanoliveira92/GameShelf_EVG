@@ -42,7 +42,7 @@
 												<label for='e-mail'>E-mail:</label>
 											</div>
 											<div class='form-group col-md-6'>
-												<input type='email' class='form-control'  name='email' value='$dados[email]' disabled>
+												<input type='email' class='form-control'  name='email' value='$dados[email]' readonly>
 											</div>
 										</div>
 									</div>
@@ -63,7 +63,7 @@
 											</div>
 									</div>	
 								</fieldset>			
-								<a href='caduser.php?id=$id' class='btn btn-default'>Alterar</a>";
+								<a href='caduser.php?id=$id' class='btn btn-primary	'>Editar</a>";
 							}else{
 								echo "<div class='row'>
 									<label for='e-mail'>Dado de entrada Inválido</label>
@@ -71,7 +71,7 @@
 							}
 							?>
 							
-								<a href="main.php" class="btn btn-default">Cancelar</a>
+								<a class="btn btn-default" onclick="Location: javascript:history.back();">Voltar</a>
 
 						<?php include("footer.php"); ?>
 						

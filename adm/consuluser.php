@@ -1,7 +1,6 @@
 <?php 
 		
 			include("mysqlconfig.inc");
-			
 			include("header.php"); 
 
 		?>
@@ -67,7 +66,7 @@
 									
 									if(!empty($_GET['nome'])){
 										$nome = trim($_GET['nome']);
-										$sqlUser = " AND nome LIKE '%$nome%'";
+										$sqlUser = " where nome LIKE '%$nome%'";
 									}
 									
 									if(isset($_GET['pag'])){
@@ -89,12 +88,13 @@
 															<th>Nome</th>
 															<th>E-mail</th>
 															<th>Tipo</th>
+															<th>Status</th>
 															<th class='actions'>Operações</th>
 														</tr>
 													</thead>
 													<tbody>";
 										
-									$result = mysql_query("select * from usuarios WHERE status='1'".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
+									$result = mysql_query("select * from usuarios".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
 									while ($row = mysql_fetch_array($result))   
 									{ 
 										echo "<tr><td>".$row['id']."</td>";
@@ -105,7 +105,12 @@
 										}else{
 											echo "<td>Moderador</td>";
 										}
-										
+										echo "<td>"; 
+											if($row['status'] > 0)
+												echo "Ativo</td>";
+											else
+												echo "Desativado</td>";
+											
 										echo "<td class='actions'>";
 										echo "	<a class='btn btn-success btn-xs' href='vistuser.php?id=".$row['id']."'>Visualizar</a>";
 										echo "	<a class='btn btn-warning btn-xs' href='caduser.php?id=".$row['id']."'>Editar</a>";
@@ -121,7 +126,7 @@
 											 
 									<ul class='pagination'>";
 										
-									$sql = "SELECT id FROM usuarios WHERE status='1'".$sqlUser;
+									$sql = "SELECT id FROM usuarios".$sqlUser;
 									$query = mysql_query($sql);
 									$total = mysql_num_rows($query); 
 									
@@ -187,7 +192,7 @@
 										echo "href='consuluser.php?pag=".($pag+1)."&nome=$nome'";
 									}
 
-									echo " aria-label='Next' rel='next'>Próximo &gt;</a></li>";
+									echo " aria-label='Next' rel='next'>Próximo &raquo;</a></li>";
 									echo "<li class='next'><a ";
 									
 									if($pag < $pags){

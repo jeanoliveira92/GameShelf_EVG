@@ -22,6 +22,7 @@
 		<link href="../css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<link href="../css/style.css" rel="stylesheet">
 		<script src="../js/jquery-1.12.3.min.js"></script>
+		<script src="../js/validator.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	</head>
 	<body>
@@ -29,14 +30,16 @@
         <div class="col-md-4">
 			<div class="row auth-logo"></div>
             <div class="login-box well">
-				<form action="login.php" method="post">
+				<form action="login.php" data-toggle="validator" method="post">
 					<div class="form-group">
 						<label for="username-email">E-mail</label>
-						<input id="username-email" value='' placeholder="E-mail" type="text" name="login" class="form-control" />
+						<input id="username-email" value='' placeholder="E-mail" type="text" name="login" class="form-control"  data-error="Informe um e-mail." required>
+						<div class='help-block with-errors'></div>
 					</div>
 					<div class="form-group">
 						<label for="password">Senha</label>
-						<input id="password" value='' placeholder="Password" type="password" name="senha"  class="form-control" />
+						<input id="password" value='' placeholder="Password" type="password" name="senha"  class="form-control" data-error="Insira sua senha." required>
+						<div class='help-block with-errors'></div>
 					</div>
 					<div class="input-group">
 						<div class="checkbox">
