@@ -90,7 +90,7 @@
 											  <div class='caption'>
 												<h3>".$row['nome']."</h3>
 												<p>".$row['descricao']."</p>";
-												echo "	<a class='btn btn-success btn-xs' href='vistgenero.php?id=".$row['id']."'>Visualizar</a>";
+												echo "	<a class='btn btn-success btn-xs' href='vistplataforma.php?id=".$row['id']."'>Visualizar</a>";
 												echo "	<a class='btn btn-warning btn-xs' href='cadplataforma.php?id=".$row['id']."'>Editar</a>";
 												//echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
 												//echo "	<a class='btn btn-danger btn-xs'  href='excluigenero.php?id=".$row['id']."' onclick='return confirm('Deseja remover realmente?')'>Excluir</a>";
