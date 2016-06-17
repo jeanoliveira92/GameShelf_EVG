@@ -48,7 +48,7 @@
 										</div>
 									</div>	
 								</fieldset>		
-								<button type='submit' class='btn btn-primary'>Alterar</button>";
+								<a href='cadPlataforma.php?id=$id' class='btn btn-primary	'>Editar</a>";
 							}else
 							?>
 								<a class="btn btn-default" onclick="Location: javascript:history.back();">Voltar</a>

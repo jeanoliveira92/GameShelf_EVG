@@ -1,0 +1,159 @@
+/* 
+
+	CSS DOCUMENT
+	Theme Name: Game Shelf Template
+	Theme URI: http://www.com
+	Description: Folha de estilos
+	Author: Antonio Jose, Felipe Wallace, Jean Carlos
+	Author URI: http://wwww.com
+	Version: 1.0
+	Tags: game, shelf, jogos, estante
+
+*/
+*{box-sizing: border-box; margin:0; padding:0; outline:0;}
+
+ html,body{
+    height:100%;
+    min-height:100%;
+    width: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding:0; 
+    background-color: #f9f9f9;
+	color: #333;
+    font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+
+img {
+	border:none;
+	margin: 0 0;
+}
+
+
+h1{
+	margin: 30px 0px;
+}
+
+a{
+	color: #4078c0;
+	text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+	text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+	text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+	text-decoration: none;
+}
+
+/* selected link */
+a:active {
+	text-decoration: none;
+}
+
+label{
+	font-size: 13px;
+}
+
+.caption p{
+	text-align: justify;
+}
+
+.pagination {
+    margin: 0px 0;
+}
+
+/* navbar */
+
+.navbar {
+	;
+}
+.navbar-header img{
+	padding: 12px 0px;
+}
+
+.nav li a{
+	text-transform: capitalize;
+}
+/* contend */
+
+.container{
+	width: 100%;
+}
+
+.sidebar{
+	aheight: 390px; 
+}
+
+.footer p{
+	margin: 15px 0px 0px 0px;
+	padding: 5px 0px;
+	text-align: right;
+	font-size: 12px;
+}
+
+
+/* Login */
+
+.login-box {
+    background-color: #f3efea !important;	
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,.24);
+    -moz-box-shadow: 0 0 15px rgba(0,0,0,.24);
+    box-shadow: 0 0 15px rgba(0,0,0,.24);
+    -webkit-border-radius: 50px 0;
+    -moz-border-radius: 50px 0;
+}
+
+.login-box .input-group{
+	display:inherit;
+}
+
+.col-md-4 .well{
+    background-color: #fff;
+}
+
+.auth-logo{
+    height: 105px;
+	background: url("../img/logo_105p.png") no-repeat center; 
+	
+}
+
+.auth-form{
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	background: url("../img/bg-banner.jpg") repeat center; 
+	webkit-box-shadow: 0 0 6px rgba(0,0,0,.21);
+    -moz-box-shadow: 0 0 6px rgba(0,0,0,.21);
+    box-shadow: 0 0 6px rgba(0,0,0,.21);
+}
+
+.btn-login {
+	position: relative;
+	padding: 6px 12px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+	
+    background-color: #eee;
+    background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+    background-image: linear-gradient(#fcfcfc, #eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+}

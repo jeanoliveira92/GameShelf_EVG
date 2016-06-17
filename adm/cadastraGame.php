@@ -47,6 +47,11 @@
 			$key = "g".$row['id'];
 			if(isset($_POST[$key]) && $_POST[$key] == $row['id']){
 				$generos .= $row['id'].",";
+				
+				$gen = mysql_query("select cont from generos where id=$row[id]");
+				$gen2 = mysql_fetch_array($gen);
+				$valor = $gen2['cont']+1;
+				mysql_query("update generos set cont=$valor where id=$row[id]");
 			}
 		}
 		
@@ -62,6 +67,11 @@
 			$key = "p".$row['id'];
 			if(isset($_POST[$key]) && $_POST[$key] == $row['id']){
 				$plataformas .= $row['id'].",";
+				
+				$gen = mysql_query("select cont from plataformas where id=$row[id]");
+				$gen2 = mysql_fetch_array($gen);
+				$valor = $gen2['cont']+1;
+				mysql_query("update plataformas set cont=$valor where id=$row[id]");
 			}
 		}
 		

@@ -48,7 +48,7 @@
 				$sql = "update plataformas set nome='$nome', descricao='$descricao' where id='$id'";
 				$msg = "Cadastro atualizado com sucesso";	
 		}else{
-			$sql = "insert into plataformas values('NULL','$nome','$descricao')";
+			$sql = "insert into plataformas values('NULL','$nome','$descricao', '0')";
 				$msg = "Cadastro realizado com sucesso";
 		}
 
