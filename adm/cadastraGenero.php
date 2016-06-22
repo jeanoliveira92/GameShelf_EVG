@@ -48,7 +48,7 @@
 				$sql = "update generos set nome='$nome', descricao='$descricao' where id='$id'";
 				$msg = "Cadastro atualizado com sucesso";	
 		}else{
-			$sql = "insert into generos values('NULL','$nome','$descricao')";
+			$sql = "insert into generos values('NULL','$nome','$descricao', '0')";
 				$msg = "Cadastro realizado com sucesso";
 		}
 
