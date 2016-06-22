@@ -42,7 +42,7 @@
 								  <li class="current"><a href="index-1.html"><i class="icon-play"></i>Games</a></li>
 								  <li><a href="index-2.html"><i class="icon-play"></i>REVIEWS</a></li>
 								  <li><a href="index-3.html"><i class="icon-play"></i>Videos</a></li>
-								  <li><a href="index-4.html"><i class="icon-play"></i>Contacts</a></li>
+								  <li><a href="adm/"><i class="icon-play"></i>Area Administrativa</a></li>
 								</ul>
 							</div>	
 						</div>

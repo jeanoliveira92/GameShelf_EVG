@@ -2,7 +2,8 @@
 		//if(isset($_SESSION['id'])) 
 			//echo "<script>Location: location.href='index.php';</script>";	
 ?>		
-		
+
+			
 		<div class="row nopadding content page1">
 			<div class="row banner">
 				<div class="col-md-12 banner" style="background-image: url(img/gamesCover/assassinsCover.jpg)">
@@ -13,9 +14,8 @@
 					<div class="col-md-12">							
 						<?php
 						
-							if(isset($_GET['id'])){
-								$id = isset($_GET['id']);
-							}
+							$id = $_GET['id'];
+							
 							$sql = "select id from games";
 							// implementar depois o select id from usuario where id='$id';
 							
@@ -121,7 +121,7 @@
 									</div>
 									<div class='col-md-4' style='text-align: center;'>";
 									if(isset($_SESSION['id'])){
-										echo "<div class='col-md-12'><a href='addFavoritos.php?id=$id'><a href='addFavoritos.php?id=$id'><a href='addFavoritos.php?id=$id'>
+										echo "<div class='col-md-12'><a href='addFavoritos.php?id=$id'>
 										<button type='button' class='btn btn-default' aria-label='Left Align'>
 										  <span class='glyphicon glyphicon-heart' aria-hidden='true'></span> Adicionar aos favoritos
 										</button></a>
@@ -170,6 +170,13 @@
 									</div>
 								</div>";
 								?>
+							
+				</div>
+				<div class="row nopadding">
+					<div class="col-md-10"></div>
+					<div class="col-md-2" style="padding-bottom: 30px;">
+						<a class="btn btn-default" onclick="Location: javascript:history.back();">Voltar</a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -14,7 +14,7 @@
 		$result_id = mysql_query($sql) or die("<script> alert('Erro no banco de dados!'); Location: javascript:history.back(); </script>");
 		
 		echo"<script> alert('Sucesso ao adicionar ao lista'); Location: location.href='search.php';</script>";
-	}
-
+	}else{
 		echo"<script> alert('Jogo já adicionado'); Location: location.href='game.php?id=$gameId';</script>";
+	}
 ?>
