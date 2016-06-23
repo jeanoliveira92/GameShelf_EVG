@@ -42,6 +42,7 @@
 			$_SESSION["id"] = $dados["id"]; 
 			$_SESSION["nome"] = stripslashes($dados["nome"]); 
 			$_SESSION["tipo"] = $dados["tipo"]; 
+			$_SESSION["nivel"] = "1"; 
 			
 			// VERIFICA SE O BOTAO LEMBRAR TA ATIVO
 			if(isset($_POST['remember'])){

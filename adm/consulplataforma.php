@@ -32,10 +32,10 @@
 						<div class="col-md-12">
 							<div id="top" class="row">
 								<div class="col-md-4">
-									<h2>Consultar Generos</h2>
+									<h2>Consultar Plataformas</h2>
 								</div>
 								<div class="col-md-6">
-									<form class="form" id="userlistform" name="userlistform" action="consulgenero.php" method="get">
+									<form class="form" id="userlistform" name="userlistform" action="consulplataforma.php" method="get">
 										<div class="input-group h2">
 											<input name="nome" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
 											<span class="input-group-btn">
@@ -47,7 +47,7 @@
 									</form>
 								</div>
 								<div class="col-md-2">
-									<a href="cadgenero.php" class="btn btn-primary pull-right h2">Novo Genero</a>
+									<a href="cadplataforma.php" class="btn btn-primary pull-right h2">Novo Genero</a>
 								</div>
 							 </div> <!-- /#top -->
 						 
@@ -81,17 +81,17 @@
 									echo "
 										<hr /><div id='list' class='row'>";
 										
-									$result = mysql_query("select * from generos".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
+									$result = mysql_query("select * from plataformas".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
 									while ($row = mysql_fetch_array($result))   
 									{ 
 										echo "
-										<div class='col-sm-6 col-md-4 selectorClass'>
-											<div class='thumbnail'>
+										<div class='col-sm-6 col-md-4  selectorClass'>
+											<div class='thumbnail' >
 											  <div class='caption'>
 												<h3>".$row['nome']."</h3>
 												<p>".$row['descricao']."</p>";
-												echo "	<a class='btn btn-success btn-xs' href='vistgenero.php?id=".$row['id']."'>Visualizar</a>";
-												echo "	<a class='btn btn-warning btn-xs' href='cadgenero.php?id=".$row['id']."'>Editar</a>";
+												echo "	<a class='btn btn-success btn-xs' href='vistplataforma.php?id=".$row['id']."'>Visualizar</a>";
+												echo "	<a class='btn btn-warning btn-xs' href='cadplataforma.php?id=".$row['id']."'>Editar</a>";
 												//echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
 												//echo "	<a class='btn btn-danger btn-xs'  href='excluigenero.php?id=".$row['id']."' onclick='return confirm('Deseja remover realmente?')'>Excluir</a>";
 												echo " </div>
@@ -106,7 +106,7 @@
 										<div class='col-md-12>
 										<ul class='pagination'>";
 											
-										$sql = "SELECT id FROM generos".$sqlUser;
+										$sql = "SELECT id FROM plataformas".$sqlUser;
 										$query = mysql_query($sql);
 										$total = mysql_num_rows($query); 
 										
@@ -121,14 +121,14 @@
 													<a ";
 													
 										if($pag != 1){
-											echo "href='consulgenero.php?pag=1&nome=$nome'";
+											echo "href='consulplataforma.php?pag=1&nome=$nome'";
 										}
 
 										echo " aria-label='Previous'><span aria-hidden='true'>&laquo;</span> Início</a></li>
 											<li><a ";
 												
 										if($pag != 1){
-											echo "href='consulgenero.php?pag=".($pag-1)."&nome=$nome'";
+											echo "href='consulplataforma.php?pag=".($pag-1)."&nome=$nome'";
 										}
 										
 										echo " aria-label='Previous'> 
@@ -150,7 +150,7 @@
 											if($i <=0) { //faz nada 
 											}else{
 												$ini++;
-												echo "<li><a href='consulgenero.php?pag=$i&nome=$nome'>$i</a></li>";		
+												echo "<li><a href='consulplataforma.php?pag=$i&nome=$nome'>$i</a></li>";		
 											}
 										}
 										
@@ -163,20 +163,20 @@
 											if($i > $pags) { 
 											} else{
 												$fim++;
-												echo "<li><a href='consulgenero.php?pag=$i&nome=$nome'>$i</a></li> "; 
+												echo "<li><a href='consulplataforma.php?pag=$i&nome=$nome'>$i</a></li> "; 
 											}
 										}
 										
 										echo "<li class='next'><a ";
 										if($pag < $pags){
-											echo "href='consulgenero.php?pag=".($pag+1)."&nome=$nome'";
+											echo "href='consulplataforma.php?pag=".($pag+1)."&nome=$nome'";
 										}
 
 										echo " aria-label='Next' rel='next'>Próximo &raquo;</a></li>";
 										echo "<li class='next'><a ";
 										
 										if($pag < $pags){
-											echo "href='consulgenero.php?pag=".$pags."&nome=$nome'";
+											echo "href='consulplataforma.php?pag=".$pags."&nome=$nome'";
 										}	
 										
 										echo "aria-label='Next' rel='end'>Fim

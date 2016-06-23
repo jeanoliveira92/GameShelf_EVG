@@ -29,7 +29,7 @@
 		}
 	}else{
 		
-		$result = mysql_query("select nome from generos");   
+		$result = mysql_query("select nome from plataformas");   
 		while ($row = mysql_fetch_array($result)){ 
 			if($row['nome'] == $nome){
 				$erro = 1;
@@ -38,17 +38,17 @@
 		}
 	}
 
-	if($erro == 1){ echo"<script> alert('Gênero já cadastrado!'); Location: javascript:history.back(); </script>";
+	if($erro == 1){ echo"<script> alert('Plataforma já cadastrada!'); Location: javascript:history.back(); </script>";
 	//se não há erro, exibe a msg
 	}else{
 	
 		//aqui podemos realizar o tratamento das informações. ex: gravando em um arquivo ou banco de dados
 		if(isset($_GET["opt"])){
 			
-				$sql = "update generos set nome='$nome', descricao='$descricao' where id='$id'";
+				$sql = "update plataformas set nome='$nome', descricao='$descricao' where id='$id'";
 				$msg = "Cadastro atualizado com sucesso";	
 		}else{
-			$sql = "insert into generos values('NULL','$nome','$descricao', '0')";
+			$sql = "insert into plataformas values('NULL','$nome','$descricao', '0')";
 				$msg = "Cadastro realizado com sucesso";
 		}
 

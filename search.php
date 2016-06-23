@@ -1,72 +1,27 @@
-<?php 
+<?php include("header.php"); 
+		///if(isset($_SESSION['id'])) 
+			//echo "<script>Location: location.href='index.php';</script>";	
+?>		
 		
-			include("mysqlconfig.inc");
-			include("header.php"); 
-
-		?>
-		
-		<!-- Modal -->
-		<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-			  </div>
-			  <div class="modal-body">
-				Deseja realmente excluir este item?
-			  </div>
-			  <div class="modal-footer">
-				<a href='excluiUsuario.php?id=' class='btn btn-primary'>Sim</a>
-				<a class='btn btn-default' data-dismiss="modal">Não</a>
-			  </div>
-			</div>
-		  </div>
-		</div> <!-- /.modal -->
-		
-		<div class="wrapper" role="main">
-			<div class="container">
-				<div class="row">
-				<?php include("left-sidebar.php"); ?>
-					<div class="col-md-9">
-						<div class="col-md-12">
-							<div id="top" class="row">
-								<div class="col-md-4">
-									<h2>Consultar Generos</h2>
-								</div>
-								<div class="col-md-6">
-									<form class="form" id="userlistform" name="userlistform" action="consulgenero.php" method="get">
-										<div class="input-group h2">
-											<input name="nome" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-											<span class="input-group-btn">
-												<button class="btn btn-primary" type="submit">
-													<span class="glyphicon glyphicon-search"></span>
-												</button>
-											</span>
-										</div>
-									</form>
-								</div>
-								<div class="col-md-2">
-									<a href="cadgenero.php" class="btn btn-primary pull-right h2">Novo Genero</a>
-								</div>
-							 </div> <!-- /#top -->
-						 
-							 <?php
-							
+		<div class="row nopadding">
+			<!-- PART II -->
+			<div class="col-md-12 content page1">
+				<div class="row page">
+					<div class="col-md-12">
+						 <?php
 								$inicio = 0;
 								$limite = 9	; // NUMERO DE ELEMENTOS
 								$pag = 1;
 								$nome = "";
 																
-								// pegar a pagina atual
-								
-								if(isset($_GET['nome'])){
-									
+								// pegar a pagina atual									
 									$sqlUser = "";
-									
-									if(!empty($_GET['nome'])){
-										$nome = trim($_GET['nome']);
-										$sqlUser = " where nome LIKE '%$nome%'";
+									if(isset($_GET['nome'])){
+										if(!empty($_GET['nome'])){
+											$nome = trim($_GET['nome']);
+											$sqlUser = " where nome LIKE '%$nome%'";
+										}else
+											$nome = "";
 									}
 									
 									if(isset($_GET['pag'])){
@@ -78,22 +33,18 @@
 
 									$inicio = ($pag * $limite) - $limite;
 									
-									echo "
-										<hr /><div id='list' class='row'>";
+									echo "<div id='list' class='row'>";
 										
-									$result = mysql_query("select * from generos".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
-									while ($row = mysql_fetch_array($result))   
-									{ 
-										echo "
-										<div class='col-sm-6 col-md-4 selectorClass'>
+									$result = mysql_query("select * from games".$sqlUser." ORDER BY nome LIMIT $inicio, $limite");   
+									
+									while ($row = mysql_fetch_array($result)){
+										
+								echo " <div class='col-sm-6 col-md-3'>
 											<div class='thumbnail'>
+											  <a href='game.php?id=$row[id]'><h3 class='nopadding'>".$row['nome']."</h3>
+											  <img src='img/gamesCover/assassins.jpg' alt='...'></a>
 											  <div class='caption'>
-												<h3>".$row['nome']."</h3>
-												<p>".$row['descricao']."</p>";
-												echo "	<a class='btn btn-success btn-xs' href='vistgenero.php?id=".$row['id']."'>Visualizar</a>";
-												echo "	<a class='btn btn-warning btn-xs' href='cadgenero.php?id=".$row['id']."'>Editar</a>";
-												//echo "	<a class='btn btn-danger btn-xs'  href='#' data-toggle='modal' data-target='#delete-modal'>Excluir</a>";
-												//echo "	<a class='btn btn-danger btn-xs'  href='excluigenero.php?id=".$row['id']."' onclick='return confirm('Deseja remover realmente?')'>Excluir</a>";
+												<p>".substr($row['descricao'], 0, 146)."...</p>";
 												echo " </div>
 											</div>
 										  </div>";										
@@ -106,7 +57,7 @@
 										<div class='col-md-12>
 										<ul class='pagination'>";
 											
-										$sql = "SELECT id FROM generos".$sqlUser;
+										$sql = "SELECT id FROM games".$sqlUser;
 										$query = mysql_query($sql);
 										$total = mysql_num_rows($query); 
 										
@@ -190,21 +141,10 @@
 								</div>
 							</div> <!-- /#bottom -->
 						</div> <!-- /#bottom -->";
-								}
 								?>
-					<script language="javascript">
-					function excluir(){
-							var resp = confirm('Deseja realmente remover?');
-							if(resp){
-								Location: location.href='main.php'; 
-							}	
-					}
 					
-					$(document).ready(function () {
-					  var container = document.querySelector('#list');
-					  var msnry = new Masonry(container, {
-									itemSelector: '.selectorClass'
-								  });
-					});
-				</script>					
-		<?php include("footer.php"); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php include("footer.php"); ?>

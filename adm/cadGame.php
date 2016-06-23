@@ -24,7 +24,7 @@
 				
 				// SETANDO CLIENT NO FORMULARIO
 				
-				$sql ="select * from usuarios where id='$id'";		
+				$sql ="select * from games where id='$id'";		
 				$query = mysql_query($sql) or die("Deu erro".mysql_error());
 
 				$dados = mysql_fetch_array($query);	
@@ -45,112 +45,255 @@
 								echo "
 								<fieldset class='form-group'>
 									<h1> Alteração de Games </h1>
-									<div class='row'>
-										<div class='form-group col-md-4'>
-											<label for='nome'>Nome:</label>
-											<input type='text' class='form-control' name='nome' value='$dados[nome]'>
-										</div>
-										<div class='form-group col-md-3'>
-											<label for='campo1'>Tipo da Conta:</label>
-											<div class='radio' >
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='2'"; if($dados['tipo'] == 2) echo "checked"; echo "> Moderador
-											  </label>
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='1' "; if($dados['tipo'] == 1) echo "checked"; echo "> Adminstrador
-											  </label>
-											</div>
-										</div>";
-										
-										if($dados['status'] < 1){
-											echo "<div class='form-group col-md-3'>
-												<label for='campo1'>Conta Desativada:</label>
-												<div class='checkbox' >
-												  <label class='radio-inline'>
-													<input type='checkbox' name='status'> Ativar conta
-												  </label>
+										<div class='row'>
+											<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
+												<div class='fileinput-new thumbnail'>
+													<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
+												</div>											
+												<div>
+													<span class='btn btn-primary btn-file'>
+														<span class='fileinput-new'>Selecionar imagem</span>
+														<input type='file' name='profile_picture' style='display:none;'>
+													</span>
+													<a href='#' class='btn btn-primary fileinput-exists' data-dismiss='fileinput'>Remover imagem</a>
 												</div>
 											</div>";
-										}
-										echo "
-									
-										</div>
-										<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='e-mail'>E-mail:</label>
-											<input type='email' class='form-control'  name='email' value='$dados[email]'>
-										</div>
-										<div class='form-group col-md-5'>
-											<label for='email2'>Repita o e-mail:</label>
-											<input type='email' class='form-control' name='email2' data-error='Confirme o e-mail.' required>
-												<div class='help-block with-errors'></div>
-										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-12'>
-											<label for='campo1'>Selecione caso deseje alterar a senha:</label>
-											<div class='radio' style='display: inline;'>
-											  <label class='radio-inline'>
-												<input type='checkbox' name='vSenha' > Alterar Senha
-											  </label>
+											
+											
+											echo "
+											<div class='form-group col-md-6'>
+												<label for='nome'>Nome:</label>
+												<input type='text' class='form-control' name='nome' data-error='Por favor, informe um nome.' value='$dados[nome]' required>
+													<div class='help-block with-errors'></div>
 											</div>
-										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='senha'>Senha:</label>
-											<input type='password' class='form-control' name='senha'>
-										</div>
-										<div class='form-group col-md-5'>
-											<label for='senha2'>Repita a senha:</label>
-											<input type='password' class='form-control' name='senha2'>
-										</div>
-									</div>	
+											<div class='form-group col-md-6'>
+													<label for='genero'>Selecione os Generos:</label>
+												<div class='checkbox'>";
+										
+											
+											$genero ="select id,nome from generos";		
+											$queryg = mysql_query($genero) or die("Deu erro".mysql_error());
+											
+											$vet = explode(",", $dados["generos"]);
+											
+											while($generos = mysql_fetch_array($queryg)){
+											echo " <div class='col-md-3'>
+														<label class='checkbox-inline'>
+															<input type='checkbox' name='g".trim($generos['id'])."' value='$generos[id]' ";
+															
+															foreach($vet as $var => $valor){
+																if($valor == trim($generos['id'])){
+																	echo "checked='checked'";
+																}
+															}
+															echo ">$generos[nome]
+														</label>
+													</div>
+													";
+													
+											}	
+											echo "</div>
+											</div>
+											
+											<div class='form-group col-md-6'>										
+												<div class='col-md-6'>
+													<label for='e-mail'>Número de Jogadores: </label>
+													<div class='radio'>
+														<label class='radio-inline'><input type='radio' name='optradio' value='Single Player'";
+														if($dados['jogadores'] == 'Single Player') echo "checked";
+														
+														echo ">Single Player</label>
+														<label class='radio-inline'><input type='radio' name='optradio' value='Multiplayer'";
+														
+														if($dados['jogadores'] == 'Multiplayer') echo "checked";
+														echo ">Multiplayer</label>
+													</div>
+												</div>
+												<div class='col-md-6'>										
+													<label for='date'>Data de Lançamento:</label>
+													<input type='date' class='form-control' name='date' value='$dados[dataLanc]'>
+												</div>
+											</div>
+											
+											<div class='form-group col-md-6'>
+													<label for='genero'>Selecione as Plataformas:</label>
+												<div class='checkbox'>";
+											
+											$genero ="select * from plataformas";		
+											$queryg = mysql_query($genero) or die("Deu erro".mysql_error());
+											
+											while($plataformas = mysql_fetch_array($queryg)){
+											echo " <div class='col-md-4'>
+														<label class='checkbox-inline'><input type='checkbox' name='p".trim($plataformas['id'])."' value='$plataformas[id]'>$plataformas[nome]</label>
+														</div>
+														";
+													
+											}	
+											echo "</div>
+											</div>
+											
+					
+											<div class='form-group col-md-6'>
+												<label for='nome'>Distribuidora:</label>
+												<input type='text' class='form-control' name='distribuidora' data-error='Por favor, informe uma distribuidora.'  value='$dados[distribuidora]' required>
+													<div class='help-block with-errors'></div>
+											</div>
+											<div class='form-group col-md-6'>
+												<label for='nome'>Criadores:</label>
+												<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.'  value='$dados[criadores]' required>
+													<div class='help-block with-errors'></div>
+											</div>
+											<div class='form-group col-md-2'>
+												<div class='form-group'>
+												  <label for='classificacao'>Classificação DJCTQ:</label>
+												  <select class='form-control' name='classIdade' id='classIdade' required>
+													<option "; 
+														if($dados['classIdade'] == '1 - Livre'){ echo "checked";} 
+													echo ">1 - Livre</option>
+													<option "; 
+														if($dados['classIdade'] == '2 - 10 anos'){ echo "checked";}
+													echo ">2 - 10 anos</option>
+													<option "; 
+														if($dados['classIdade'] == '3 - 12 anos'){ echo "checked";}
+													echo ">3 - 12 anos</option>
+													<option "; 
+														if($dados['classIdade'] == '4 - 14 anos'){ echo "checked";}
+													echo ">4 - 14 anos</option>
+													<option ";
+														if($dados['classIdade'] == '5 - 16 anos'){ echo "checked";}
+													echo ">5 - 16 anos</option>
+													<option "; 
+														if($dados['classIdade'] == '6 - 18 anos'){ echo "checked>
+														";}
+													echo ">6 - 18 anos</option>
+												  </select>
+												</div>
+											</div>
+											<div class='form-group col-md-2'>
+												<div class='form-group'>
+												  <label for='classificacao'>Classificação IGN:</label>
+												  <input type='number' class='form-control' name='ign' min='0' max='10' step='0.1' value='$dados[ign]'>
+												</div>
+											</div>
+											
+											<div class='form-group col-md-10'>
+												  <label for='descricao'>Descricao:</label>
+												  <textarea class='form-control' rows='10' id='descricao' name ='descricao'>$dados[descricao]</textarea>
+											</div>
+										</div>	
+								
+								
+								
+								
 								</fieldset>			
 								<button type='submit' class='btn btn-primary'>Alterar</button>";
+								
 							}else{
-								echo "<fieldset class='form-group'>
+								echo "<fieldset class='form-group inline'>
 									<h1> Cadastro de Games </h1>
 									<div class='row'>
-										<div class='form-group col-md-5'>
+										<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
+											<div class='fileinput-new thumbnail'>
+												<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
+											</div>											
+											<div>
+												<span class='btn btn-primary btn-file'>
+													<span class='fileinput-new'>Selecionar imagem</span>
+													<input type='file' name='profile_picture' style='display:none;'>
+												</span>
+												<a href='#' class='btn btn-primary fileinput-exists' data-dismiss='fileinput'>Remover imagem</a>
+											</div>
+										</div>
+										
+										<div class='form-group col-md-6'>
 											<label for='nome'>Nome:</label>
 											<input type='text' class='form-control' name='nome' data-error='Por favor, informe um nome.' required>
 												<div class='help-block with-errors'></div>
 										</div>
-										<div class='form-group col-md-4'>
-											<label for='campo1'>Tipo da Conta:</label>
-											<div class='radio' >
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo' value='2' checked> Moderador
-											  </label>
-											  <label class='radio-inline'>
-												<input type='radio' name='tipo'  value='1'> Adminstrador
-											  </label>
+										<div class='form-group col-md-6'>
+												<label for='genero'>Selecione os Generos:</label>
+											<div class='checkbox'>";
+										
+										$genero ="select * from generos";		
+										$queryg = mysql_query($genero) or die("Deu erro".mysql_error());
+										
+										while($generos = mysql_fetch_array($queryg)){
+										echo " <div class='col-md-3'>
+													<label class='checkbox-inline'>
+														<input type='checkbox' name='g".trim($generos['id'])."' value='$generos[id]'>$generos[nome]
+													</label>
+												</div>
+												";
+												
+										}	
+										echo "</div>
+										</div>
+										
+										<div class='form-group col-md-6'>										
+											<div class='col-md-6'>
+												<label for='e-mail'>Número de Jogadores: </label>
+												<div class='radio'>
+													<label class='radio-inline'><input type='radio' name='optradio' value='Single Player' checked>Single Player</label>
+													<label class='radio-inline'><input type='radio' name='optradio' value='Multiplayer'>Multiplayer</label>
+												</div>
+											</div>
+											<div class='col-md-6'>										
+												<label for='date'>Data de Lançamento:</label>
+												<input type='date' class='form-control' name='date'>
 											</div>
 										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='e-mail'>E-mail:</label>
-											<input type='email' class='form-control'  name='email' data-error='E-mail inválido.' required>
+										
+										<div class='form-group col-md-6'>
+												<label for='genero'>Selecione as Plataformas:</label>
+											<div class='checkbox'>";
+										
+										$genero ="select * from plataformas";		
+										$queryg = mysql_query($genero) or die("Deu erro".mysql_error());
+										
+										while($plataformas = mysql_fetch_array($queryg)){
+										echo " <div class='col-md-4'>
+													<label class='checkbox-inline'><input type='checkbox' name='p".trim($plataformas['id'])."' value='$plataformas[id]'>$plataformas[nome]</label>
+													</div>
+													";
+												
+										}	
+										echo "</div>
+										</div>
+										
+				
+										<div class='form-group col-md-6'>
+											<label for='nome'>Distribuidora:</label>
+											<input type='text' class='form-control' name='distribuidora' data-error='Por favor, informe uma distribuidora.' required>
 												<div class='help-block with-errors'></div>
 										</div>
-										<div class='form-group col-md-5'>
-											<label for='email2'>Repita o e-mail:</label>
-											<input type='email' class='form-control' name='email2' data-error='Confirme o e-mail.' required>
+										<div class='form-group col-md-6'>
+											<label for='nome'>Criadores:</label>
+											<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.' required>
 												<div class='help-block with-errors'></div>
 										</div>
-									</div>
-									<div class='row'>
-										<div class='form-group col-md-5'>
-											<label for='senha' required>Senha:</label>
-											<input type='password' class='form-control' name='senha' data-error='Mínimo 8 caracteres.' required>
-												<div class='help-block with-errors'></div>
+										<div class='form-group col-md-2'>
+											<div class='form-group'>
+											  <label for='classificacao'>Classificação DJCTQ:</label>
+											  <select class='form-control' name='classIdade' id='classIdade' required>
+												<option cheked>1 - Livre</option>
+												<option>2 - 10 anos</option>
+												<option>3 - 12 anos</option>
+												<option>4 - 14 anos</option>
+												<option>5 - 16 anos</option>
+												<option>6 - 18 anos</option>
+											  </select>
+											</div>
 										</div>
-										<div class='form-group col-md-5'>
-											<label for='senha2' required>Repita a senha:</label>
-											<input type='password' class='form-control' name='senha2' data-error='Confirme a senha.' required>
-												<div class='help-block with-errors'></div>
+										<div class='form-group col-md-2'>
+											<div class='form-group'>
+											  <label for='classificacao'>Classificação IGN:</label>
+											  <input type='number' class='form-control' name='ign' min='0' max='10' step='0.1' value='5.0'>
+											</div>
+										</div>
+										
+										<div class='form-group col-md-10'>
+											  <label for='descricao'>Descricao:</label>
+											  <textarea class='form-control' rows='10' id='descricao' name ='descricao'></textarea>
 										</div>
 									</div>	
 								</fieldset>			

@@ -1,4 +1,4 @@
-<!-- Left sidebar -->
+	<!-- Left sidebar -->
 					<div class="col-md-3 sidebar">
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
@@ -55,6 +55,15 @@
 													<span class="glyphicon glyphicon-file text-info"></span><a href="consulgenero.php"> Consultar Generos</a>
 												</td>
 											</tr>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadPlataforma.php"> Cadastrar Plataformas</a>
+												</td>
+											<tr>
+												<td>
+													<span class="glyphicon glyphicon-file text-info"></span><a href="consulplataforma.php"> Consultar Plataformas</a>
+												</td>
+											</tr>
 										</tbody></table>
 									</div>
 								</div>
@@ -63,7 +72,7 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class=""><span class="glyphicon glyphicon-file">
-										</span> Relarórios</a>
+										</span> Relatórios</a>
 									</h4>
 								</div>
 								<div id="collapseFour" class="panel-collapse in" style="height: auto;">
@@ -71,7 +80,7 @@
 										<table class="table">
 											<tbody><tr>
 												<td>
-													<span class="glyphicon glyphicon glyphicon-save-file"></span><a href="">Relatório de Jogos</a>
+													<span class="glyphicon glyphicon glyphicon-save-file"></span><a href="relatorioJogos.php">Relatório de Jogos</a>
 												</td>
 											</tr>
 										</tbody></table>

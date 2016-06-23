@@ -13,11 +13,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>EVG - ADMINISTRATIVO</title>
 		<link href="../css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<link href="../css/style.css" rel="stylesheet">
+		<link href="../css/adm_style.css" rel="stylesheet">
 		<script src="../js/jquery-1.12.3.min.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 		<script src="../js/validator.js"></script>
+		<script src="../js/masonry.min.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	</head>
+	
 	<body>
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
