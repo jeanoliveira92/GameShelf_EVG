@@ -44,7 +44,7 @@
 										<div class='row'>
 											<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
 												<div class='fileinput-new thumbnail'>
-													<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
+													<img src='../img/gamesCover/".$dados['capa']."'>
 												</div>											
 												<div>
 													<span class='btn btn-primary btn-file'>

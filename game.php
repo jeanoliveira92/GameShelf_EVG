@@ -1,48 +1,50 @@
 <?php include("header.php"); 
 		//if(isset($_SESSION['id'])) 
 			//echo "<script>Location: location.href='index.php';</script>";	
+
+						
+		$id = $_GET['id'];
+		
+		$sql = "select id from games";
+		// implementar depois o select id from usuario where id='$id';
+		
+		$query = mysql_query($sql) or die(mysql_error());
+
+		while($ID = mysql_fetch_array($query)){
+			$temp = md5(trim($ID['id']));
+			
+			if($id == $temp){				
+				$id = $ID["id"];
+				break;
+			}
+		}
+		
+		// SETANDO CLIENT NO FORMULARIO
+		
+		$sql ="select * from games where id='$id'";		
+		$query = mysql_query($sql) or die("Deu erro".mysql_error());
+		
+							$dados = mysql_fetch_array($query);
 ?>		
 
 			
 		<div class="row nopadding content page1">
 			<div class="row banner">
-				<div class="col-md-12 banner" style="background-image: url(img/gamesCover/assassinsCover.jpg)">
+				<div class="col-md-12 banner" style="background-image: url(img/gamesCover/<?php echo $dados['banner']; ?>)">
 				</div>
 			</div>
 			<div class="col-md-12">	
 				<div class="row page">
 					<div class="col-md-12">							
-						<?php
-						
-							$id = $_GET['id'];
-							
-							$sql = "select id from games";
-							// implementar depois o select id from usuario where id='$id';
-							
-							$query = mysql_query($sql) or die(mysql_error());
-
-							while($ID = mysql_fetch_array($query)){
-								$temp = md5(trim($ID['id']));
-								
-								if($id == $temp){				
-									$id = $ID["id"];
-									break;
-								}
-							}
-							
-							// SETANDO CLIENT NO FORMULARIO
-							
-							$sql ="select * from games where id='$id'";		
-							$query = mysql_query($sql) or die("Deu erro".mysql_error());
-
-							$dados = mysql_fetch_array($query);	
+<?php
+	
 							echo "<h1 style='padding-top: 20px'>$dados[nome]</h1>	
 							</div>
 						</div>
 						<div class='row'>
 								<div class='row nopadding form-inline'>
 								
-									<div class='col-md-4 fileinput' style='background-image: URL(img/gamesCover/assassinsCoverMini.jpg)'>
+									<div class='col-md-4 fileinput' style='background-image: URL(img/gamesCover/".$dados['capa'].")'>
 									</div>
 
 									<div class='form-group col-md-8 spacing'>
@@ -171,6 +173,7 @@
 								</div>";
 								?>
 							
+				</div>
 				</div>
 				<div class="row nopadding">
 					<div class="col-md-10"></div>

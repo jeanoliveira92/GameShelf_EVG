@@ -42,7 +42,7 @@
 								echo " <div class='col-sm-6 col-md-3'>
 											<div class='thumbnail'>
 											  <a href='game.php?id=$row[id]'><h3 class='nopadding'>".$row['nome']."</h3>
-											  <img src='img/gamesCover/assassins.jpg' alt='...'></a>
+											  <img src='img/gamesCover/".$row['capa']."' alt='...'></a>
 											  <div class='caption'>
 												<p>".substr($row['descricao'], 0, 146)."...</p>";
 												echo " </div>
