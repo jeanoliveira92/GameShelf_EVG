@@ -36,9 +36,9 @@
 				<?php include("left-sidebar.php"); ?>
 					<div class="col-md-9">
 						<div class="col-md-12">
-							<form method="post" data-toggle="validator"  id="cadastraUsuario" name="cadastraUsuario" 
+							<form method="post" data-toggle="validator" enctype="multipart/form-data" id="cadastraUsuario" name="cadastraUsuario" 
 							<?php	if(isset($id)){	echo "action='cadastraGame.php?opt=update&id=$_GET[id]'";}
-									else{			echo "action='cadastraGame.php'";}						
+									else{			echo "action='cadastraGame.php' ";}						
 							?>>
 							<?php
 							if(isset($id)){
@@ -48,14 +48,13 @@
 										<div class='row'>
 											<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
 												<div class='fileinput-new thumbnail'>
-													<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
-												</div>											
+													<img src='../img/gamesCover/".$dados['capa']."'>
+												</div>										
 												<div>
-													<span class='btn btn-primary btn-file'>
-														<span class='fileinput-new'>Selecionar imagem</span>
-														<input type='file' name='profile_picture' style='display:none;'>
-													</span>
-													<a href='#' class='btn btn-primary fileinput-exists' data-dismiss='fileinput'>Remover imagem</a>
+												<h4>Selecione uma imagem</h4>
+													<input type='file' class='' name='foto' placeholder='arquivo'>
+												<h4>Selecione um banner</h4>
+													<input type='file' class='' name='banner' placeholder='arquivo'>
 												</div>
 											</div>";
 											
@@ -133,16 +132,12 @@
 											</div>
 											
 					
-											<div class='form-group col-md-6'>
+											<div class='form-group col-md-4'>
 												<label for='nome'>Distribuidora:</label>
 												<input type='text' class='form-control' name='distribuidora' data-error='Por favor, informe uma distribuidora.'  value='$dados[distribuidora]' required>
 													<div class='help-block with-errors'></div>
 											</div>
-											<div class='form-group col-md-6'>
-												<label for='nome'>Criadores:</label>
-												<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.'  value='$dados[criadores]' required>
-													<div class='help-block with-errors'></div>
-											</div>
+											
 											<div class='form-group col-md-2'>
 												<div class='form-group'>
 												  <label for='classificacao'>Classificação DJCTQ:</label>
@@ -169,6 +164,11 @@
 												  </select>
 												</div>
 											</div>
+											<div class='form-group col-md-4'>
+												<label for='nome'>Criadores:</label>
+												<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.'  value='$dados[criadores]' required>
+													<div class='help-block with-errors'></div>
+											</div>
 											<div class='form-group col-md-2'>
 												<div class='form-group'>
 												  <label for='classificacao'>Classificação IGN:</label>
@@ -194,14 +194,13 @@
 									<div class='row'>
 										<div class='col-md-4 fileinput fileinput-new' data-provides='fileinput'>
 											<div class='fileinput-new thumbnail'>
-												<img src='https://s3-sa-east-1.amazonaws.com/metroca/13/conversions/thumb.jpg'>
+												<img src='..\img\gamesCover\default.JPG'>
 											</div>											
 											<div>
-												<span class='btn btn-primary btn-file'>
-													<span class='fileinput-new'>Selecionar imagem</span>
-													<input type='file' name='profile_picture' style='display:none;'>
-												</span>
-												<a href='#' class='btn btn-primary fileinput-exists' data-dismiss='fileinput'>Remover imagem</a>
+											<h4>Selecione uma imagem</h4>
+												<input type='file' class='' name='foto' placeholder='arquivo'>
+											<h4>Selecione um banner</h4>
+												<input type='file' class='' name='banner' placeholder='arquivo'>
 											</div>
 										</div>
 										
@@ -261,14 +260,9 @@
 										</div>
 										
 				
-										<div class='form-group col-md-6'>
+										<div class='form-group col-md-4'>
 											<label for='nome'>Distribuidora:</label>
 											<input type='text' class='form-control' name='distribuidora' data-error='Por favor, informe uma distribuidora.' required>
-												<div class='help-block with-errors'></div>
-										</div>
-										<div class='form-group col-md-6'>
-											<label for='nome'>Criadores:</label>
-											<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.' required>
 												<div class='help-block with-errors'></div>
 										</div>
 										<div class='form-group col-md-2'>
@@ -283,6 +277,11 @@
 												<option>6 - 18 anos</option>
 											  </select>
 											</div>
+										</div>
+										<div class='form-group col-md-4'>
+											<label for='nome'>Criadores:</label>
+											<input type='text' class='form-control' name='criadores' data-error='Por favor, informe um criador.' required>
+												<div class='help-block with-errors'></div>
 										</div>
 										<div class='form-group col-md-2'>
 											<div class='form-group'>

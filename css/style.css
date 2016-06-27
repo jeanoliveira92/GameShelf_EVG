@@ -261,7 +261,7 @@ nav { position: relative; padding: 0px; }
 .item{
 	width: 100%;
 	overflow: hidden;
-	height: 400px;
+	height: 400	px;
 }
 
 .item > img{

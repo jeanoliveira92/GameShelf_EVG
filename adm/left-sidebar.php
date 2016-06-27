@@ -71,16 +71,35 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class=""><span class="glyphicon glyphicon-file">
-										</span> Relatórios</a>
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class=""><span class="glyphicon glyphicon-user">
+										</span> Assinantes</a>
 									</h4>
 								</div>
-								<div id="collapseFour" class="panel-collapse in" style="height: auto;">
+								<div id="collapseFour" class="panel-collapse collapse" style="height: auto;">
 									<div class="panel-body">
 										<table class="table">
 											<tbody><tr>
 												<td>
-													<span class="glyphicon glyphicon glyphicon-save-file"></span><a href="relatorioJogos.php">Relatório de Jogos</a>
+													<span class="glyphicon glyphicon glyphicon-save-file"></span><a href="consulAssinantes.php">Consultar Assinantes</a>
+												</td>
+											</tr>
+										</tbody></table>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" class=""><span class="glyphicon glyphicon-file">
+										</span> Relatórios</a>
+									</h4>
+								</div>
+								<div id="collapseFive" class="panel-collapse collapse" style="height: auto;">
+									<div class="panel-body">
+										<table class="table">
+											<tbody><tr>
+												<td>
+													<span class="glyphicon glyphicon glyphicon-save-file"></span><a href="relatorioJogos.php">Relatório do Sistema</a>
 												</td>
 											</tr>
 										</tbody></table>
