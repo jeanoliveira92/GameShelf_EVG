@@ -30,7 +30,7 @@
 			
 		<div class="row nopadding content page1">
 			<div class="row banner">
-				<div class="col-md-12 banner" style="background-image: url(img/gamesCover/<?php echo $dados['banner']; ?>)">
+				<div class="col-md-12 banner" style="background-image: url('img/gamesCover/<?php echo $dados['banner']; ?>');">
 				</div>
 			</div>
 			<div class="col-md-12">	

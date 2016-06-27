@@ -113,10 +113,10 @@
 				$nome_imagem2 = md5(uniqid(time())) . "." . $ext2[1];
 	 
 				// Caminho de onde ficará a imagem
-				$caminho_imagem2 = "../img/gamesCover/" . $nome_imagem;
+				$caminho_imagem2 = "../img/gamesCover/" . $nome_imagem2;
 	 
 				// Faz o upload da imagem para seu respectivo caminho
-				move_uploaded_file($banner["tmp_name"], $caminho_imagem);	
+				move_uploaded_file($banner["tmp_name"], $caminho_imagem2);	
 				
 				$up2 = ", banner='$nome_imagem2'";
 			}else{

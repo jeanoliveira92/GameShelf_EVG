@@ -57,7 +57,7 @@
 							*/
 
 							
-							mysql_data_seek($result, 1);
+							//mysql_data_seek($result, 1);
 							while($row = mysql_fetch_array($result)){
 															
 								echo   "<tr>
