@@ -6,10 +6,8 @@ Este projeto consiste em uma biblioteca digital de jogos desenvolvida para a dis
 * PHP
 * Javascript
 * Ajax
+* Mysql
 ## Interface
 ![GameShelf Interface](https://raw.githubusercontent.com/jeanoliveira92/gameshelf/master/screenshot.jpg)
-
-
 ## Licença
-
 Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.md] (LICENSE.md) para obter detalhes
